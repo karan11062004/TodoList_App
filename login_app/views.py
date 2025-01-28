@@ -13,7 +13,12 @@ def register(request):
             messages.success(request,("New user created successfully !!"))
             return redirect('login')
         else :
-            return HttpResponse(reg_form.errors.as_json())
+            err=reg_form.errors.as_text()
+            err_list=err.split('*')
+            messages.error(request,(err_list[2]))
+            return redirect('register')
+        
+        
 
 
         
