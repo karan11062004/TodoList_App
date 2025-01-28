@@ -11,7 +11,8 @@ def register(request):
         if reg_form.is_valid():
             reg_form.save()
             messages.success(request,("New user created successfully !!"))
-        return redirect('login')
+            return redirect('login')
+
         
     else:
         register_form=CustomForm()
