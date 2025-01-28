@@ -12,6 +12,9 @@ def register(request):
             reg_form.save()
             messages.success(request,("New user created successfully !!"))
             return redirect('login')
+        else :
+            return HttpResponse(form.errors.as_json())
+
 
         
     else:
