@@ -16,7 +16,7 @@ def todolist(request):
             messages.success(request,('New Task Added Successfully!!'))
         return redirect('todolist')
     else: 
-        all_tasks=TaskList.objects.filter(manage=request.user)
+        all_tasks=TaskList.objects.filter(manage=request.user).order_by('id')
         paginator=Paginator(all_tasks,6)
         page=request.GET.get('pg')
         all_tasks=paginator.get_page(page)
@@ -63,4 +63,3 @@ def about_us(request):
     return render(request,'about_us.html',{'welcome':'welcome to about us'})
 def contact_us(request):
     return render(request,'contact_us.html',{'welcome':'welcome to contact us'})
-# Create your views here.
