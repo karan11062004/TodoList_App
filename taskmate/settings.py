@@ -30,7 +30,7 @@ SECRET_KEY = env("DJANGO_SECURITY_KEY")
 DEBUG = env("DJANGO_DEBUG")
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1:8000','web-production-76e74.up.railway.app']
-CSRF_TRUSTED_HOSTS=['https://web-production-76e74.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://web-production-76e74.up.railway.app']
 
 STATIC_ROOT=os.path.join(BASE_DIR,"staticfiles")
 
