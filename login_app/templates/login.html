@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%load crispy_forms_filters %}
+
+{% load static%}
+{%block content%}
+<style>
+    body{
+        background-image: url({%static 'images/login_bg.jpeg'%});
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-top:0;
+
+    }
+</style>
+<div class='n4'>
+<div class='container'>
+    {%if messages%}
+    {%for message in messages%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {%endfor%}
+{%endif%}
+<h3> ALREADY HAVE AN ACCOUNT LOGIN</h3></div>
+<div class="container mt-3">
+    <div class='col-lg-6'>
+        <form method="POST" class="align-self-center col">
+            {% csrf_token %}
+            <div class="mt-3"> <p></p>{{form|crispy}}</div>
+            <div class="mt-3 col">
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+            </div>
+    </form>
+</div>
+    <div class='col-lg-10 mt-3' >
+        <h5>REGISTER YOURSELF WITH US : <a href={% url 'register'%} class='btn btn-secondary'>REGISTER</button></a></div></div></h5>
+</div>
+</div>
+
+{%endblock content%}

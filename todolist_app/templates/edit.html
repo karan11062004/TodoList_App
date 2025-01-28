@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+<title> About_us </title>
+{% endblock title %}
+{% block content %}
+<div class="container mt-3">
+    {%if task_obj.manage == request.user %}
+    <form method="POST" class="row">
+        {% csrf_token %}
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" id="task" name="task" placeholder="{{task_obj.task}}">
+            <input type='hidden'  name='done' value='{{task_obj.done}}'>
+        </div>
+        <div class="col-lg-2">
+            <button type="submit" class="btn btn-primary">Update Task</button>
+        </div>
+    </form>
+    {%else%}
+    <h3 class="text-danger">YOU ARE NOT A VALID USER TO MAKE CHANGES TO THIS TASK.PLEASE CHECK AGAIN</h3>
+    {%endif%}
+{% endblock content %}
